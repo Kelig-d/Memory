@@ -41,7 +41,8 @@ public class Carte {
     }
 
     public boolean identique(Carte carte){
-        // On regarde si deux cartes sont identiques en regardant leur ID car les cartes identiques ont un ID qui se suivent, soit 1&2, 3&4... ensembles
+        // On regarde si deux cartes sont identiques en regardant leur ID car les cartes identiques ont un ID qui se suivent, soit 1&2, 3&4... ensembles 
+        // (A changer sans doute ?)
         boolean identique = false;
         if(id%2 == 0 && carte.getID() == (this.id - 1)){
             identique = true;
