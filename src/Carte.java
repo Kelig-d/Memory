@@ -56,15 +56,19 @@ public class Carte {
 
     // Getter/Setter
 
-    private int getID() {
+    public int getID() {
         return id;
     }
 
-    private JLabel getImage_visible() {
+    public void setID(int id){
+        this.id = id;
+    }
+
+    public JLabel getImage_visible() {
         return image_visible;
     }
 
-    private void setImage_visible(JLabel image_visible){
+    public void setImage_visible(JLabel image_visible){
         this.image_visible = image_visible;
     }
 }
