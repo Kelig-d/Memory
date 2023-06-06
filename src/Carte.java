@@ -11,6 +11,7 @@ public class Carte {
 
     // Constructeurs
     public Carte(int id, JLabel image_visible, JLabel image_cache){
+        // Initialisation de tous les attributs de cartes
         this.id = id;
         this.image_visible = image_visible;
         this.image_cache = image_cache;
@@ -19,22 +20,45 @@ public class Carte {
 
     // Méthode
     public void reveler(){
+        // On rend visible la carte
         this.visible = true;
         image_visible.setVisible(visible);
         image_cache.setVisible(!visible);
     }
 
     public void cacher(){
+        // On montre le dos de la carte
         this.visible = false;
         image_visible.setVisible(visible);
         image_cache.setVisible(!visible);
     }
 
+    public void retirer(){
+        // On etire la carte du jeu en la rendant invisible (A changer sans doute ?)
+        this.visible = false;
+        image_visible.setVisible(visible);
+        image_cache.setVisible(visible);
+    }
+
     public boolean identique(Carte carte){
-        return this.image_visible == carte.getImage_visible();
+        // On regarde si deux cartes sont identiques en regardant leur ID car les cartes identiques ont un ID qui se suivent, soit 1&2, 3&4... ensembles
+        boolean identique = false;
+        if(id%2 == 0 && carte.getID() == (this.id - 1)){
+            identique = true;
+        }
+        else{
+            if(carte.getID() == (this.id +1)){
+                identique = true;
+            }
+        }
+        return identique;
     }
 
     // Getter/Setter
+
+    private int getID() {
+        return id;
+    }
 
     private JLabel getImage_visible() {
         return image_visible;
