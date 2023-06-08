@@ -11,7 +11,7 @@ public class Controller {
     public void validateParams(String firstplayer, String secondPlayer, String theme, String size){
         String first = firstplayer == "" ? "Joueur 1" : firstplayer;
         String second = secondPlayer == "" ? "Joueur 2" : secondPlayer;
-        int[] si = {size.charAt(0), size.charAt(2)};
+        int[] si = {Integer.parseInt(size.charAt(0)+""),Integer.parseInt(size.charAt(2)+"")};
         modele.setSelectedSize(si);
         modele.setSelectedTheme(theme);
         modele.setFirstPlayer(first);
