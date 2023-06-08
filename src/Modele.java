@@ -18,6 +18,11 @@ public class Modele implements Subject
     private int nb_dos = 1;
     private int nb_face = 0;
 
+	private String firstPlayer;
+	private String secondPlayer;
+	private String selectedTheme;
+	private int[] selectedSize;
+
 	public Modele()
 	{		
 		this.liste = new ArrayList<Carte>();
@@ -50,8 +55,24 @@ public class Modele implements Subject
 	public List<String> getSizes() {
 		return sizes;
 	}
-       
-    public void setCarte(int index,int id, int id_paire, JLabel image_verso, JLabel image_recto) 
+
+	public String getFirstPlayer() {
+		return firstPlayer;
+	}
+
+	public String getSecondPlayer() {
+		return secondPlayer;
+	}
+
+	public String getSelectedTheme() {
+		return selectedTheme;
+	}
+
+	public int[] getSelectedSize() {
+		return selectedSize;
+	}
+
+	public void setCarte(int index, int id, int id_paire, JLabel image_verso, JLabel image_recto)
     {  
     	Carte carte = liste.get(index);
 		carte.setID(id);
@@ -68,6 +89,22 @@ public class Modele implements Subject
 
 	public void setSizes(List<String> sizes) {
 		this.sizes = sizes;
+	}
+
+	public void setFirstPlayer(String firstPlayer) {
+		this.firstPlayer = firstPlayer;
+	}
+
+	public void setSecondPlayer(String secondPlayer) {
+		this.secondPlayer = secondPlayer;
+	}
+
+	public void setSelectedTheme(String selectedTheme) {
+		this.selectedTheme = selectedTheme;
+	}
+
+	public void setSelectedSize(int[] selectedSize) {
+		this.selectedSize = selectedSize;
 	}
 
 	public void registerObserver(Observer o)

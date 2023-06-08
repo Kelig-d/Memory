@@ -12,8 +12,12 @@ public class Controller {
         String first = firstplayer == "" ? "Joueur 1" : firstplayer;
         String second = secondPlayer == "" ? "Joueur 2" : secondPlayer;
         int[] si = {size.charAt(0), size.charAt(2)};
-        this.gameFrame = new FenetreJeu(first, second, theme, si, this, this.modele);
-        configFrame.dispose();
+        modele.setSelectedSize(si);
+        modele.setSelectedTheme(theme);
+        modele.setFirstPlayer(first);
+        modele.setSecondPlayer(second);
+        this.gameFrame = new FenetreJeu(this, this.modele);
+        configFrame.setVisible(false);
 
     }
 }
