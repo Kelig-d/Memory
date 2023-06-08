@@ -5,6 +5,7 @@ public class Carte {
 
     // Attributs
     private int id;
+    private int id_paire;
     private JLabel image_visible;
     private JLabel image_cache;
     private boolean visible;
@@ -41,18 +42,8 @@ public class Carte {
     }
 
     public boolean identique(Carte carte){
-        // On regarde si deux cartes sont identiques en regardant leur ID car les cartes identiques ont un ID qui se suivent, soit 1&2, 3&4... ensembles 
-        // (A changer sans doute ?)
-        boolean identique = false;
-        if(id%2 == 0 && carte.getID() == (this.id - 1)){
-            identique = true;
-        }
-        else{
-            if(carte.getID() == (this.id +1)){
-                identique = true;
-            }
-        }
-        return identique;
+        // On regarde si deux cartes sont identiques
+        return (this.id_paire == carte.getID_paire());
     }
 
     // Getter/Setter
@@ -61,8 +52,16 @@ public class Carte {
         return id;
     }
 
+    public int getID_paire() {
+        return id_paire;
+    }
+
     public void setID(int id){
         this.id = id;
+    }
+
+    public void setID_paire(int id_paire){
+        this.id_paire = id_paire;
     }
 
     public JLabel getImage_visible() {
