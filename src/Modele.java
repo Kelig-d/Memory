@@ -10,7 +10,7 @@ public class Modele implements Subject
     private List<Carte> liste;
 	private List<Observer> observers = new ArrayList<>();
 
-    private double Num_dos;
+    private int Num_dos;
     private JLabel dos = new JLabel();
 
 	private List<String> themes = new ArrayList<>(Arrays.asList(new String[]{"theme 1", "theme 2"}));
@@ -27,8 +27,8 @@ public class Modele implements Subject
 	public Modele()
 	{		
 		this.liste = new ArrayList<Carte>();
-        this.Num_dos = (Math.random())%((double)(this.nb_dos));
-        dos.setIcon(new ImageIcon("Images/Dos" + Num_dos +"png"));
+        this.Num_dos = ((int) Math.random())%((int)(this.nb_dos));
+        dos.setIcon(new ImageIcon("Images/Dos" + Num_dos +".png"));
     }
 
     public void creerCartes(int nbCartes){
@@ -56,7 +56,7 @@ public class Modele implements Subject
 	{  
 		return this.liste.get(index);      
 	}
-    
+
 	public List<String> getSizes() {
 		return sizes;
 	}
