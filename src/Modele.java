@@ -16,13 +16,16 @@ public class Modele implements Subject
 	{		
 		this.liste = new ArrayList<Carte>();
     }
-	
+    
     public void creerCartes(int nbCartes){
         Carte carte;
-        for(int i=0; i<nbCartes/2; i++){
+        for(int i=0; i<nbCartes; i+=2){
+            // A compléter
             carte = new Carte(i, i+1, null, null);
             this.liste.add(carte);
-            carte = new Carte(i+1, null, null);
+            // A compléter
+            carte = new Carte(i+1, i, null, null);
+            this.liste.add(carte);
         }
     }
 
