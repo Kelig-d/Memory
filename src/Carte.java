@@ -11,9 +11,10 @@ public class Carte {
     private boolean visible;
 
     // Constructeurs
-    public Carte(int id, JLabel image_visible, JLabel image_cache){
+    public Carte(int id, int id_paire, JLabel image_visible, JLabel image_cache){
         // Initialisation de tous les attributs de cartes
         this.id = id;
+        this.id_paire = id_paire;
         this.image_visible = image_visible;
         this.image_cache = image_cache;
         this.visible = false;
@@ -56,6 +57,18 @@ public class Carte {
         return id_paire;
     }
 
+    public JLabel getImage_visible() {
+        return image_visible;
+    }
+ 
+    public JLabel getImage_cache() {
+        return image_cache;
+    }
+
+    public Boolean getVisible(){
+        return visible;
+    }
+
     public void setID(int id){
         this.id = id;
     }
@@ -64,11 +77,15 @@ public class Carte {
         this.id_paire = id_paire;
     }
 
-    public JLabel getImage_visible() {
-        return image_visible;
-    }
-
     public void setImage_visible(JLabel image_visible){
         this.image_visible = image_visible;
+    }
+
+    public void setImage_cache(JLabel image_cache){
+        this.image_cache = image_cache;
+    }
+
+    public void setVisible(Boolean visible){
+        this.visible = visible;
     }
 }
