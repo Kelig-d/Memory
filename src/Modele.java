@@ -29,13 +29,13 @@ public class Modele implements Subject
 	{		
 		this.liste = new ArrayList<Carte>();
         this.Num_dos = (Math.random())%((double)(this.nb_dos));
+        dos.setIcon(new ImageIcon("Images/Dos" + Num_dos +"png"));
     }
 
     public void creerCartes(int nbCartes){
         Carte carte;
         for(int i=0; i<nbCartes; i+=2){
             // A compléter
-            dos.setIcon(new ImageIcon("Images/Dos" + Num_dos +"png"));
             carte = new Carte(i, i+1, null, dos);
             this.liste.add(carte);
             // A compléter
