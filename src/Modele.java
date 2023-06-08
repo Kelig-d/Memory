@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Modele implements Subject
@@ -10,7 +11,8 @@ public class Modele implements Subject
     private List<Carte> liste;
 	private List<Observer> observers = new ArrayList<>();
 
-    private double dos;
+    private double Num_dos;
+    private JLabel dos = new JLabel();
 
 	private List<String> themes = new ArrayList<>(Arrays.asList(new String[]{"theme 1", "theme 2"}));
 	private List<String> sizes = new ArrayList<>(Arrays.asList(new String[]{"4x3", "4x4", "5x4", "6x5", "6x6", "7x6"}));
@@ -21,17 +23,18 @@ public class Modele implements Subject
 	public Modele()
 	{		
 		this.liste = new ArrayList<Carte>();
-        this.dos = (Math.random())%((double)(this.nb_dos));
+        this.Num_dos = (Math.random())%((double)(this.nb_dos));
     }
 
     public void creerCartes(int nbCartes){
         Carte carte;
         for(int i=0; i<nbCartes; i+=2){
             // A compléter
-            carte = new Carte(i, i+1, null, );
+            dos.setIcon(new ImageIcon("Images/Dos" + Num_dos +"png"));
+            carte = new Carte(i, i+1, null, dos);
             this.liste.add(carte);
             // A compléter
-            carte = new Carte(i+1, i, null, null);
+            carte = new Carte(i+1, i, null, dos);
             this.liste.add(carte);
         }
     }
