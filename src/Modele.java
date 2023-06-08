@@ -47,13 +47,16 @@ public class Modele implements Subject
 	{  
 		return this.liste;       
 	}
+
 	public List<String> getThemes() {
 		return themes;
 	}
+
 	public Carte getCarte(int index)
 	{  
 		return this.liste.get(index);      
 	}
+    
 	public List<String> getSizes() {
 		return sizes;
 	}
