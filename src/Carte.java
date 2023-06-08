@@ -18,6 +18,7 @@ public class Carte {
         this.image_visible = image_visible;
         this.image_cache = image_cache;
         this.visible = false;
+        image_cache.setVisible(!visible);
     }
 
     // Méthode
