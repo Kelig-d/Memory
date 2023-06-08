@@ -1,15 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ConfigurationFrame extends JFrame {
     private JLabel firstPlayerLabel,secondPlayerLabel, themeLabel, sizeLabel;
     private JTextField firstPlayerField, secondPlayerField;
-    String[] themes = {"Cartes à jouer" , "Spiderman" , "owo" ,"Dial"};
-    String[] sizes = {"4x4","3x3","5x5","6x6"};
+
     private JComboBox <String> themeCombo, sizeCombo;
     private JButton playButton;
 
-    public ConfigurationFrame(){
+    private Modele modele;
+    private Controller controller;
+
+    public ConfigurationFrame(Controller control, Modele model){
+        this.controller = control;
+        this.modele = model;
         this.setTitle("Paramètres");
         this.setMinimumSize(new Dimension(250,240));
         this.setResizable(false);
@@ -47,7 +56,7 @@ public class ConfigurationFrame extends JFrame {
         this.themeLabel.setSize(60,20);
         this.add(this.themeLabel);
 
-        this.themeCombo = new JComboBox<String>(themes);
+        this.themeCombo = new JComboBox<String>(.getThemes());
         this.themeCombo.setLocation(70, 90);
         this.themeCombo.setSize(150,20);
         this.add(this.themeCombo);
@@ -57,7 +66,7 @@ public class ConfigurationFrame extends JFrame {
         this.sizeLabel.setSize(60,20);
         this.add(this.sizeLabel);
 
-        this.sizeCombo = new JComboBox<String>(sizes);
+        this.sizeCombo = new JComboBox<String>(modele.sizes);
         this.sizeCombo.setLocation(70, 130);
         this.sizeCombo.setSize(80,20);
         this.add(this.sizeCombo);
@@ -65,7 +74,19 @@ public class ConfigurationFrame extends JFrame {
         this.playButton = new JButton("Jouer");
         this.playButton.setSize(110,20);
         this.playButton.setLocation(60,170);
+        this.playButton.addActionListener(new PlayPush(this));
         this.add(this.playButton);
     }
 
+    private class PlayPush implements ActionListener{
+        private ConfigurationFrame f;
+        public PlayPush(ConfigurationFrame win){
+            this.f = win;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            f.controller.validateParams(f.sizes.s);
+        }
+    }
 }
