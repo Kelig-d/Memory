@@ -27,7 +27,7 @@ public class Modele implements Subject
 	public Modele()
 	{		
 		this.liste = new ArrayList<Carte>();
-        this.Num_dos = ((int) Math.random())%((int)(this.nb_dos));
+        this.Num_dos = ((int) Math.random())%((this.nb_dos));
         dos.setIcon(new ImageIcon("Images/Dos" + Num_dos +".png"));
     }
 
