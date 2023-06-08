@@ -56,7 +56,7 @@ public class ConfigurationFrame extends JFrame {
         this.themeLabel.setSize(60,20);
         this.add(this.themeLabel);
 
-        this.themeCombo = new JComboBox<String>(.getThemes());
+        this.themeCombo = new JComboBox<String>(modele.getThemes().toArray(new String[0]));
         this.themeCombo.setLocation(70, 90);
         this.themeCombo.setSize(150,20);
         this.add(this.themeCombo);
@@ -66,7 +66,7 @@ public class ConfigurationFrame extends JFrame {
         this.sizeLabel.setSize(60,20);
         this.add(this.sizeLabel);
 
-        this.sizeCombo = new JComboBox<String>(modele.sizes);
+        this.sizeCombo = new JComboBox<String>(modele.getSizes().toArray(new String[0]));
         this.sizeCombo.setLocation(70, 130);
         this.sizeCombo.setSize(80,20);
         this.add(this.sizeCombo);
@@ -86,7 +86,12 @@ public class ConfigurationFrame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            f.controller.validateParams(f.sizes.s);
+            f.controller.validateParams(
+                    f.firstPlayerField.getText(),
+                    f.secondPlayerField.getText(),
+                    f.themeCombo.getSelectedItem().toString(),
+                    f.sizeCombo.getSelectedItem().toString()
+                    );
         }
     }
 }
