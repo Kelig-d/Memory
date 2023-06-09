@@ -25,21 +25,20 @@ public class Carte extends JButton{
     public void reveler(){
         // On rend visible la carte
         this.visible = true;
-        
+        this.setIcon(image_visible);
+
     }
 
     public void cacher(){
         // On montre le dos de la carte
         this.visible = false;
-        this.setVisible(visible);
-        this.setVisible(!visible);
+        this.setIcon(image_cache);
     }
 
     public void retirer(){
         // On etire la carte du jeu en la rendant invisible (A changer sans doute ?)
         this.visible = false;
-        this.setVisible(visible);
-        this.setVisible(visible);
+        this.setVisible(false);
     }
 
     public boolean identique(Carte carte){
