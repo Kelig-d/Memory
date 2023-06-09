@@ -17,6 +17,7 @@ public class Carte extends JButton{
         this.id_paire = id_paire;
         this.image_visible = image_visible;
         this.image_cache = image_cache;
+        this.setIcon(image_cache);
         this.visible = false;
         this.setVisible(!visible);
     }

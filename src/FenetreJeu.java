@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FenetreJeu extends JFrame {
 
@@ -12,7 +14,7 @@ public class FenetreJeu extends JFrame {
         this.modele = model;
         this.setTitle("Memory");
         this.setMinimumSize(new Dimension(250,240));
-        this.setResizable(false);
+        this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLayout(null);
@@ -21,13 +23,27 @@ public class FenetreJeu extends JFrame {
 
     }
 
-    public void construct(){
+    public void construct() {
         JPanel game = new JPanel();
-        game.setLayout(new GridLayout(modele.getSelectedSize()[0],modele.getSelectedSize()[1] ));
-        modele.creerCartes(modele.getSelectedSize()[0]*modele.getSelectedSize()[1]);
-        for(Carte card: modele.getList()){
-            game.add(card.getImage_cache());
+        game.setLayout(new GridLayout(modele.getSelectedSize()[0], modele.getSelectedSize()[1]));
+        modele.creerCartes(modele.getSelectedSize()[0] * modele.getSelectedSize()[1]);
+        for (Carte card : modele.getList()) {
+            card.addActionListener(new flipAction(this));
+            game.add(card);
         }
         this.setContentPane(game);
+    }
+
+    private class flipAction implements ActionListener{
+        private FenetreJeu f;
+
+        public flipAction(FenetreJeu win){
+            f = win;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ((Carte)e.getSource()).reveler();
+        }
     }
 }
