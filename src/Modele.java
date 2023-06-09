@@ -19,7 +19,7 @@ public class Modele implements Subject
 	private List<String> sizes = new ArrayList<>(Arrays.asList(new String[]{"4x3", "4x4", "5x4", "6x5", "6x6", "7x6"}));
 
     private int nb_dos = 1;
-    private int nb_face_flowers = 13;
+    private int nb_face_flowers = 21; 
 
 	private String firstPlayer;
 	private String secondPlayer;
