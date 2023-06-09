@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -36,10 +37,18 @@ public class Modele implements Subject
         Carte carte;
 		int Num_face = ((int) Math.random())%((this.nb_face_flowers));
         for(int i=0; i<nbCartes; i+=2){
-			Icon face = new ImageIcon("Images/Flowers/face" + Num_face%this.nb_face_flowers +".png");
+			ImageIcon face = new ImageIcon("Images/Flowers/face" + Num_face%this.nb_face_flowers +".png");
             carte = new Carte(i, i+1, face, dos);
+			Image img = face.getImage();
+			Image newimg = img.getScaledInstance( carte.getWidth(), carte.getHeight()-100,  java.awt.Image.SCALE_SMOOTH ) ;
+			face = new ImageIcon( newimg );
+			carte.setImage_visible(face);
             this.liste.add(carte);
             carte = new Carte(i+1, i, face, dos);
+			img = face.getImage();
+			newimg = img.getScaledInstance( carte.getWidth(), carte.getHeight()-100,  java.awt.Image.SCALE_SMOOTH ) ;
+			face = new ImageIcon( newimg );
+			carte.setImage_visible(face);
             this.liste.add(carte);
 			Num_face+=1;
         }

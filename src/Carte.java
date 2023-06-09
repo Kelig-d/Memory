@@ -1,5 +1,6 @@
 import javax.swing.JButton;
 import javax.swing.Icon;
+import java.awt.*;
 
 public class Carte extends JButton{
 
@@ -17,6 +18,9 @@ public class Carte extends JButton{
         this.image_visible = image_visible;
         this.image_cache = image_cache;
         this.setIcon(image_cache);
+        this.setMinimumSize(new Dimension(100,200));
+        this.setSize(new Dimension(100,200));
+        this.setMaximumSize(new Dimension(100,200));
     }
 
     // Méthode

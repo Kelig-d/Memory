@@ -13,7 +13,7 @@ public class FenetreJeu extends JFrame {
         this.controller = control;
         this.modele = model;
         this.setTitle("Memory");
-        this.setMinimumSize(new Dimension(250,240));
+        this.setMinimumSize(new Dimension(500,500));
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -25,11 +25,24 @@ public class FenetreJeu extends JFrame {
 
     public void construct() {
         JPanel game = new JPanel();
-        game.setLayout(new GridLayout(modele.getSelectedSize()[0], modele.getSelectedSize()[1]));
+        //modele.getSelectedSize()[0], modele.getSelectedSize()[1], 10,10
+        GridBagLayout grid = new GridBagLayout();
+        game.setLayout(grid);
+        GridBagConstraints gbc = new GridBagConstraints();
+
+
         modele.creerCartes(modele.getSelectedSize()[0] * modele.getSelectedSize()[1]);
+        int i=0, j=0;
         for (Carte card : modele.getList()) {
+
+            gbc.gridx = j;
+            gbc.gridy = i;
             card.addActionListener(new flipAction(this));
+            grid.setConstraints(card, gbc);
             game.add(card);
+            i = j==3 ? i+1 : i;
+            j = j==3 ? 0 : j+1;
+
         }
         this.setContentPane(game);
     }
