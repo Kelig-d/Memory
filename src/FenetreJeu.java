@@ -35,13 +35,13 @@ public class FenetreJeu extends JFrame {
         int i=0, j=0;
         for (Carte card : modele.getList()) {
 
-            gbc.gridx = j;
-            gbc.gridy = i;
+            gbc.gridx = i;
+            gbc.gridy = j;
             card.addActionListener(new flipAction(this));
             grid.setConstraints(card, gbc);
             game.add(card);
-            i = j==3 ? i+1 : i;
-            j = j==3 ? 0 : j+1;
+            j = i==modele.getSelectedSize()[1]-1 ? j+1 : j;
+            i = i==modele.getSelectedSize()[1]-1 ? 0 : i+1;
 
         }
         this.setContentPane(game);

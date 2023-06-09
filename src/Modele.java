@@ -35,18 +35,18 @@ public class Modele implements Subject
 
     public void creerCartes(int nbCartes){
         Carte carte;
-		int Num_face = ((int) Math.random())%((this.nb_face_flowers));
+		int Num_face = ((int) (Math.random()*100))%((this.nb_face_flowers));
         for(int i=0; i<nbCartes; i+=2){
 			ImageIcon face = new ImageIcon("Images/Flowers/face" + Num_face%this.nb_face_flowers +".png");
             carte = new Carte(i, i+1, face, dos);
 			Image img = face.getImage();
-			Image newimg = img.getScaledInstance( carte.getWidth(), carte.getHeight()-100,  java.awt.Image.SCALE_SMOOTH ) ;
+			Image newimg = img.getScaledInstance( carte.getWidth(), carte.getHeight()-25,  java.awt.Image.SCALE_SMOOTH ) ;
 			face = new ImageIcon( newimg );
 			carte.setImage_visible(face);
             this.liste.add(carte);
             carte = new Carte(i+1, i, face, dos);
 			img = face.getImage();
-			newimg = img.getScaledInstance( carte.getWidth(), carte.getHeight()-100,  java.awt.Image.SCALE_SMOOTH ) ;
+			newimg = img.getScaledInstance( carte.getWidth(), carte.getHeight()-25,  java.awt.Image.SCALE_SMOOTH ) ;
 			face = new ImageIcon( newimg );
 			carte.setImage_visible(face);
             this.liste.add(carte);
