@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.Icon;
@@ -35,16 +37,14 @@ public class Modele implements Subject
         Carte carte;
 		int Num_face = ((int) Math.random())%((this.nb_face_flowers));
         for(int i=0; i<nbCartes; i+=2){
-            // A compléter
-
 			Icon face = new ImageIcon("Images/Flowers/face" + Num_face%this.nb_face_flowers +".png");
             carte = new Carte(i, i+1, face, dos);
             this.liste.add(carte);
-            // A compléter
             carte = new Carte(i+1, i, face, dos);
             this.liste.add(carte);
 			Num_face+=1;
         }
+		Collections.shuffle(this.liste);
     }
 
 	public List<Carte> getList()
