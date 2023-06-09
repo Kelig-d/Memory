@@ -8,7 +8,6 @@ public class Carte extends JButton{
     private int id_paire;
     private Icon image_visible;
     private Icon image_cache;
-    private boolean visible;
 
     // Constructeurs
     public Carte(int id, int id_paire, Icon image_visible, Icon image_cache){
@@ -18,8 +17,6 @@ public class Carte extends JButton{
         this.image_visible = image_visible;
         this.image_cache = image_cache;
         this.setIcon(image_cache);
-        this.visible = false;
-        this.setVisible(!visible);
     }
 
     // Méthode
@@ -36,7 +33,6 @@ public class Carte extends JButton{
 
     public void retirer(){
         // On etire la carte du jeu en la rendant invisible (A changer sans doute ?)
-        this.visible = false;
         this.setVisible(false);
     }
 
@@ -63,10 +59,6 @@ public class Carte extends JButton{
         return image_cache;
     }
 
-    public Boolean getVisible(){
-        return visible;
-    }
-
     public void setID(int id){
         this.id = id;
     }
@@ -81,9 +73,5 @@ public class Carte extends JButton{
 
     public void setImage_cache(Icon image_cache){
         this.image_cache = image_cache;
-    }
-
-    public void setVisible(Boolean visible){
-        this.visible = visible;
     }
 }
