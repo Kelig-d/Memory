@@ -78,7 +78,7 @@ public class Modele implements Subject
 		return selectedSize;
 	}
 
-	public void setCarte(int index, int id, int id_paire, JLabel image_verso, JLabel image_recto)
+	public void setCarte(int index, int id, int id_paire, Icon image_verso, Icon image_recto)
     {  
     	Carte carte = liste.get(index);
 		carte.setID(id);
