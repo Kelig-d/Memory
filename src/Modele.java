@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -11,7 +12,7 @@ public class Modele implements Subject
 	private List<Observer> observers = new ArrayList<>();
 
     private int Num_dos;
-    private JLabel dos = new JLabel();
+    private Icon dos = new ImageIcon();
 
 	private List<String> themes = new ArrayList<>(Arrays.asList(new String[]{"theme 1", "theme 2"}));
 	private List<String> sizes = new ArrayList<>(Arrays.asList(new String[]{"4x3", "4x4", "5x4", "6x5", "6x6", "7x6"}));
@@ -28,7 +29,7 @@ public class Modele implements Subject
 	{		
 		this.liste = new ArrayList<Carte>();
         this.Num_dos = ((int) Math.random())%((this.nb_dos));
-        dos.setIcon(new ImageIcon("Images/Dos" + Num_dos +".png"));
+        dos = new ImageIcon("Images/Dos" + Num_dos +".png");
     }
 
     public void creerCartes(int nbCartes){
