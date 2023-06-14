@@ -25,23 +25,12 @@ public class FenetreJeu extends JFrame {
 
     public void construct() {
         JPanel game = new JPanel();
-        //modele.getSelectedSize()[0], modele.getSelectedSize()[1], 10,10
-        GridBagLayout grid = new GridBagLayout();
-        game.setLayout(grid);
-        GridBagConstraints gbc = new GridBagConstraints();
-
-
+        game.setLayout(new GridLayout(modele.getSelectedSize()[0], modele.getSelectedSize()[1], 10,10));
         modele.creerCartes(modele.getSelectedSize()[0] * modele.getSelectedSize()[1]);
         int i=0, j=0;
         for (Carte card : modele.getList()) {
-
-            gbc.gridx = i;
-            gbc.gridy = j;
             card.addActionListener(new flipAction(this));
-            grid.setConstraints(card, gbc);
             game.add(card);
-            j = i==modele.getSelectedSize()[1]-1 ? j+1 : j;
-            i = i==modele.getSelectedSize()[1]-1 ? 0 : i+1;
 
         }
         this.setContentPane(game);
