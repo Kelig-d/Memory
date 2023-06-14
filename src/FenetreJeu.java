@@ -8,6 +8,7 @@ public class FenetreJeu extends JFrame {
     // Attributs
     private Controller controller;
 	private Modele modele;
+    private int cards_returned;
 
     public FenetreJeu(Controller control, Modele model ) {
         this.controller = control;
@@ -41,11 +42,13 @@ public class FenetreJeu extends JFrame {
 
         public flipAction(FenetreJeu win){
             f = win;
+
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             ((Carte)e.getSource()).reveler();
+
         }
     }
 }

@@ -30,7 +30,7 @@ public class Modele implements Subject
 	{		
 		this.liste = new ArrayList<Carte>();
         this.Num_dos = ((int) Math.random())%((this.nb_dos));
-        dos = new StretchIcon("Images/Dos" + Num_dos +".png");
+        dos = new StretchIcon("Images/Dos" + Num_dos +".png", true);
     }
 
     public void creerCartes(int nbCartes){

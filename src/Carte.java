@@ -18,6 +18,10 @@ public class Carte extends JButton{
         this.image_visible = image_visible;
         this.image_cache = image_cache;
         this.setIcon(image_cache);
+        this.setOpaque(false);
+        this.setBorderPainted(false);
+        this.setBackground(Color.white);
+        this.setMargin(new Insets(0,0,0,0));
         this.setMinimumSize(new Dimension(100,125));
         this.setPreferredSize(new Dimension(100,125));
         this.setSize(new Dimension(100,125));
