@@ -2,13 +2,13 @@ public class Joueur {
 
     //attributs
     private String nom;
-    private int score = 0;
+    private int score;
     private Boolean jouer;
     
     //Constructeur
     public Joueur(String nom, int score, Boolean jouer){
         this.nom = nom;
-        this.score = score;
+        this.score = 0;
         this.jouer= jouer;
     }
 
