@@ -13,7 +13,7 @@ public class Modele implements Subject
 	private List<Observer> observers = new ArrayList<>();
 
     private int Num_dos;
-    private Icon dos = new ImageIcon();
+    private StretchIcon dos;
 
 	private List<String> themes = new ArrayList<>(Arrays.asList(new String[]{"theme 1", "theme 2"}));
 	private List<String> sizes = new ArrayList<>(Arrays.asList(new String[]{"4x3", "4x4", "5x4", "6x5", "6x6", "7x6"}));
@@ -30,25 +30,17 @@ public class Modele implements Subject
 	{		
 		this.liste = new ArrayList<Carte>();
         this.Num_dos = ((int) Math.random())%((this.nb_dos));
-        dos = new ImageIcon("Images/Dos" + Num_dos +".png");
+        dos = new StretchIcon("Images/Dos" + Num_dos +".png");
     }
 
     public void creerCartes(int nbCartes){
         Carte carte;
 		int Num_face = ((int) (Math.random()*100))%((this.nb_face_flowers));
         for(int i=0; i<nbCartes; i+=2){
-			ImageIcon face = new ImageIcon("Images/Flowers/face" + Num_face%this.nb_face_flowers +".png");
+			StretchIcon face = new StretchIcon("Images/Flowers/face" + Num_face%this.nb_face_flowers +".png", true);
             carte = new Carte(i, i+1, face, dos);
-			Image img = face.getImage();
-			Image newimg = img.getScaledInstance( carte.getWidth(), carte.getHeight()-25,  java.awt.Image.SCALE_SMOOTH ) ;
-			face = new ImageIcon( newimg );
-			carte.setImage_visible(face);
             this.liste.add(carte);
             carte = new Carte(i+1, i, face, dos);
-			img = face.getImage();
-			newimg = img.getScaledInstance( carte.getWidth(), carte.getHeight()-25,  java.awt.Image.SCALE_SMOOTH ) ;
-			face = new ImageIcon( newimg );
-			carte.setImage_visible(face);
             this.liste.add(carte);
 			Num_face+=1;
         }
