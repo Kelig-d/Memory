@@ -21,8 +21,8 @@ public class Modele implements Subject
     private int nb_dos = 1;
     private int nb_face_flowers = 21; 
 
-	private String firstPlayer;
-	private String secondPlayer;
+	private Joueur firstPlayer;
+	private Joueur secondPlayer;
 	private String selectedTheme;
 	private int[] selectedSize;
 
@@ -47,6 +47,12 @@ public class Modele implements Subject
 		Collections.shuffle(this.liste);
     }
 
+	public void creerJoueur(String nom1, String nom2){
+		Boolean Premier = (int) Math.random()*100%2 == 0;
+		firstPlayer = new Joueur(nom1, Premier);
+		secondPlayer = new Joueur(nom2, !Premier);
+	}
+
 	public List<Carte> getList()
 	{  
 		return this.liste;       
@@ -65,12 +71,20 @@ public class Modele implements Subject
 		return sizes;
 	}
 
-	public String getFirstPlayer() {
+	public Joueur getFirstPlayer() {
 		return firstPlayer;
 	}
 
-	public String getSecondPlayer() {
+	public Joueur getSecondPlayer() {
 		return secondPlayer;
+	}
+
+	public String getNomFirstPlayer() {
+		return firstPlayer.getNom();
+	}
+
+	public String getNomSecondPlayer() {
+		return secondPlayer.getNom();
 	}
 
 	public String getSelectedTheme() {
@@ -100,12 +114,20 @@ public class Modele implements Subject
 		this.sizes = sizes;
 	}
 
-	public void setFirstPlayer(String firstPlayer) {
+	public void setFirstPlayer(Joueur firstPlayer) {
 		this.firstPlayer = firstPlayer;
 	}
 
-	public void setSecondPlayer(String secondPlayer) {
+	public void setSecondPlayer(Joueur secondPlayer) {
 		this.secondPlayer = secondPlayer;
+	}
+
+	public void setNomFirstPlayer(String nomFirstPlayer) {
+		this.firstPlayer.setNom(nomFirstPlayer);
+	}
+
+	public void setNomSecondPlayer(String nomSecondPlayer) {
+		this.secondPlayer.setNom(nomSecondPlayer);
 	}
 
 	public void setSelectedTheme(String selectedTheme) {

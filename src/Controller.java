@@ -20,8 +20,8 @@ public class Controller {
         int[] si = {Integer.parseInt(size.charAt(0)+""),Integer.parseInt(size.charAt(2)+"")};
         modele.setSelectedSize(si);
         modele.setSelectedTheme(theme);
-        modele.setFirstPlayer(first);
-        modele.setSecondPlayer(second);
+        modele.setNomFirstPlayer(first);
+        modele.setNomSecondPlayer(second);
         this.gameFrame = new FenetreJeu(this, this.modele);
         configFrame.setVisible(false);
 

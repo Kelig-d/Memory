@@ -6,7 +6,7 @@ public class Joueur {
     private Boolean jouer;
     
     //Constructeur
-    public Joueur(String nom, int score, Boolean jouer){
+    public Joueur(String nom, Boolean jouer){
         this.nom = nom;
         this.score = 0;
         this.jouer= jouer;
