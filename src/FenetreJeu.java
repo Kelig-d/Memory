@@ -27,19 +27,24 @@ public class FenetreJeu extends JFrame {
         JPanel fenetre = new JPanel();
         JPanel game = new JPanel();
         JPanel joueurs = new JPanel();
+
         fenetre.setLayout(new BorderLayout());
         game.setLayout(new GridLayout(modele.getSelectedSize()[0], modele.getSelectedSize()[1], 10,10));
         joueurs.setLayout(new GridLayout());
+
         modele.creerCartes(modele.getSelectedSize()[0] * modele.getSelectedSize()[1]);
+
         fenetre.add(game, BorderLayout.CENTER);
         fenetre.add(joueurs,BorderLayout.NORTH);
         fenetre.add(new JLabel(modele.getNomFirstPlayer()));
         fenetre.add(new JLabel(modele.getNomSecondPlayer()));
+
         for (Carte card : modele.getList()) {
             card.addActionListener(new flipAction(this));
             game.add(card);
 
         }
+
         this.setContentPane(game);
     }
 
