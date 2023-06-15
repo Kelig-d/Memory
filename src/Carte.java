@@ -46,7 +46,7 @@ public class Carte extends JButton{
 
     public boolean identique(Carte carte){
         // On regarde si deux cartes sont identiques
-        return (this.id_paire == carte.getID_paire());
+        return (this.id_paire == carte.getID());
     }
 
     // Getter/Setter
