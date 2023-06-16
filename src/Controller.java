@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class Controller {
-    private ConfigurationFrame configFrame;
+    public ConfigurationFrame configFrame;
     private FenetreJeu gameFrame;
     private Modele modele;
     private ArrayList<Carte> cardsReturned;
@@ -18,14 +18,16 @@ public class Controller {
     }
 
     public void validateParams(String firstplayer, String secondPlayer, String theme, String size){
-        String first = firstplayer == "" ? "Joueur 1" : firstplayer;
-        String second = secondPlayer == "" ? "Joueur 2" : secondPlayer;
+        String first = firstplayer.isEmpty() ? "Joueur 1" : firstplayer;
+        String second = secondPlayer.isEmpty() ? "Joueur 2" : secondPlayer;
         int[] si = {Integer.parseInt(size.charAt(0)+""),Integer.parseInt(size.charAt(2)+"")};
         modele.setSelectedSize(si);
         remainingCards = (si[0]*si[1]/2);
         modele.setSelectedTheme(theme);
         modele.creerJoueur(first,second);
+        modele.creerCartes(modele.getSelectedSize()[0] * modele.getSelectedSize()[1]);
         this.gameFrame = new FenetreJeu(this, this.modele);
+        modele.registerObserver(gameFrame);
         configFrame.setVisible(false);
 
     }
@@ -56,6 +58,7 @@ public class Controller {
                 }).start();
                 if(modele.getFirstPlayer().getJouer()) modele.getFirstPlayer().incrementerScore();
                 else modele.getSecondPlayer().incrementerScore();
+                gameFrame.incrementScorePlayers();
             }
             else{
                 new Thread(() ->{
@@ -68,14 +71,16 @@ public class Controller {
                     }
                     modele.getFirstPlayer().changerJoueur();
                     modele.getSecondPlayer().changerJoueur();
-
                     cardsReturned.clear();
                     changeButtonState();
+                    //modele.notifyObservers();
                 }).start();
+
 
             }
 
         }
+
     }
 
     private void flipCard(Carte card){
@@ -104,5 +109,8 @@ public class Controller {
         gameFrame.setSize(gameFrame.getWidth()+1,gameFrame.getHeight()+1);
     }
 
-
+    public void quitGame(){
+        configFrame.setVisible(true);
+        gameFrame.dispose();
+    }
 }

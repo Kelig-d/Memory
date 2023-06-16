@@ -63,9 +63,9 @@ public class Modele implements Subject
     }
 
 	public void creerJoueur(String nom1, String nom2){
-		Boolean Premier = (int) Math.random()*100%2 == 0;
-		firstPlayer = new Joueur(nom1, Color.pink, Premier);
-		secondPlayer = new Joueur(nom2,Color.CYAN, !Premier);
+		Boolean Premier = (int)(Math.random()*10)%2 == 0;
+		firstPlayer = new Joueur(nom1, Premier);
+		secondPlayer = new Joueur(nom2, !Premier);
 	}
 
 
@@ -119,7 +119,7 @@ public class Modele implements Subject
 		carte.setImage_visible(image_verso);
         carte.setImage_cache(image_recto);
         carte.setVisible(false);
-		notifyObservers();
+
     }
 
 	public void setThemes(List<String> themes) {
